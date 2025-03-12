@@ -1,21 +1,29 @@
+import Image from "next/image";
+
 type CardProps = {
-  country: string;
+  index: number;
+  flag: string;
+  name: string;
   capital: string;
   region: string;
-  population: string;
+  population: number;
 };
 
-const Card = ({ country, capital, region, population }: CardProps) => {
+const Card = ({ index, flag, name, capital, region, population }: CardProps) => {
   return (
     <div className="h-full bg-white overflow-hidden rounded-lg shadow-lg">
       <div className="aspect-video w-full">
-        <img
+        <Image
+          alt={`Flag of ${name}`}
           className="w-full h-full object-cover"
-          src="https://placehold.co/600x400"
+          src={flag || "https://via.placeholder.com/300"}
+          width={500}
+          height={300}
+          priority={index < 12}
         />
       </div>
       <div className="p-6 text-sm text-gray-600">
-        <h2 className="text-xl font-semibold mb-4">{country}</h2>
+        <h2 className="text-xl font-semibold mb-4">{name}</h2>
         <div className="space-y-2">
           <div className="flex items-center gap-1">
             <span className="font-semibold">Capital:</span>
