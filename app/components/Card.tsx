@@ -16,7 +16,7 @@ const Card = ({ index, flag, name, capital, region, population }: CardProps) => 
         <Image
           alt={`Flag of ${name}`}
           className="w-full h-full object-cover"
-          src={flag || "https://via.placeholder.com/300"}
+          src={flag || "/flag-placeholder.svg"}
           width={500}
           height={300}
           priority={index < 12}
