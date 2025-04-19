@@ -4,6 +4,7 @@ import "./globals.css";
 
 const noto_Sans = Noto_Sans({
   weight: ["400", "700"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
