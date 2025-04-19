@@ -1,6 +1,6 @@
 "use client";
 
-import {  Card, Grid } from "./components";
+import { Card, Grid, Search } from "./components";
 import { useEffect, useState } from "react";
 import { countriesApi } from "./services";
 import Link from "next/link";
@@ -42,10 +42,15 @@ export default function Home() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-  const sortedCountries = countries.sort((a, b) => a.name.common.localeCompare(b.name.common, 'en-US'));
+  const sortedCountries = countries.sort((a, b) =>
+    a.name.common.localeCompare(b.name.common, "en-US")
+  );
 
   return (
     <>
+      <div className="mb-8">
+        <Search />
+      </div>
       <Grid>
         {sortedCountries.map(
           ({ cca3, flags, name, capital, region, population }, index) => {
