@@ -3,8 +3,8 @@ const ApiClient = (baseUrl) => ({
         try {
             const response = await fetch(`${baseUrl}${endpoint}`);
 
-            if(!response.ok) {
-                return [null, `HTTP error! Status: ${response.statusText}`];
+            if (!response.ok) {
+                return [null, `HTTP error! Status: ${response.status}`];
             }
 
             const data = await response.json();
@@ -18,8 +18,11 @@ const ApiClient = (baseUrl) => ({
 
 const api = ApiClient("https://restcountries.com/v3.1");
 
+const baseFields = "cca3,flags,name,capital,region,population"
+
 const countriesApi = {
-    getAll: () => api.get("/all?fields=cca3,name,capital,region,population,flags"),
+    getAll: () => api.get(`/all?fields=${baseFields}`),
+    getCountry: (id) => api.get(`/alpha/${id}?fields=${baseFields},languages,currencies,tld,borders`),
 }
 
 export { countriesApi };
