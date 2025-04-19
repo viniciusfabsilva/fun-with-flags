@@ -5,11 +5,13 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { countriesApi } from "../../services";
 import { useParams } from "next/navigation";
+import { formatNumber } from "@/app/utils"
 
 type DetailedCountry = {
   cca3: string;
   name: {
     common: string;
+    official: string;
   };
   flags: {
     svg: string;
@@ -76,7 +78,7 @@ export default function Country() {
 
   const { svg: flag } = flags ?? {};
   const [capitalName] = capital ?? [];
-  const { common: countryName } = name ?? {};
+  const { common: countryName, official: officialName } = name ?? {};
 
   const languagesNames = Object.values(languages ?? {}).join(", ");
   const currenciesNames = Object.values(currencies ?? {}).map(
@@ -111,13 +113,18 @@ export default function Country() {
           </h2>
           <div className="space-y-2">
             <div>
+              <span className="font-semibold">Official Name:</span>{" "}
+              {officialName}
+            </div>
+            <div>
               <span className="font-semibold">Capital:</span> {capitalName}
             </div>
             <div>
               <span className="font-semibold">region:</span> {region}
             </div>
             <div>
-              <span className="font-semibold">Population:</span> {population}
+              <span className="font-semibold">Population:</span>{" "}
+              {formatNumber(population)}
             </div>
             <div>
               <span className="font-semibold">Languages:</span> {languagesNames}
