@@ -65,7 +65,7 @@ const Select = ({ options, selected, setSelected }: SelectProps) => {
   };
 
   return (
-    <div className="w-full md:w-1/3 relative">
+    <div className="w-full md:w-1/2 relative z-50">
       <button
         type="button"
         aria-haspopup="listbox"
