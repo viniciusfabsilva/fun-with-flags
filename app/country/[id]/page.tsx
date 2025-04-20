@@ -3,10 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { countriesApi } from "../../services";
+import { countriesApi } from "@/services";
 import { useParams } from "next/navigation";
-import { formatNumber } from "@/app/utils"
-import { Error, Loading } from "@/app/components";
+import { formatNumber } from "@/utils"
+import { Error, Loading } from "@/components";
 
 type DetailedCountry = {
   cca3: string;

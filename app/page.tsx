@@ -1,8 +1,8 @@
 "use client";
 
-import { Card, Grid, Loading, Search, Select, Error } from "./components";
+import { Card, Grid, Loading, Search, Select, Error } from "@/components";
 import { useEffect, useState } from "react";
-import { countriesApi } from "./services";
+import { countriesApi } from "@/services";
 import Link from "next/link";
 
 type Country = {
