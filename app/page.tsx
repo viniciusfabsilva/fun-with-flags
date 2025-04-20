@@ -43,8 +43,7 @@ export default function Home() {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
-
-  const regions = [...new Set(countries.map(({ region }) => region))];
+  const regions = ["All Regions", ...new Set(countries.map(({ region }) => region))];
 
   const sortedCountries = countries.sort((a, b) =>
     a.name.common.localeCompare(b.name.common, "en-US")
