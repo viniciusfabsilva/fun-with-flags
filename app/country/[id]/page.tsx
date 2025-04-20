@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { countriesApi } from "../../services";
 import { useParams } from "next/navigation";
 import { formatNumber } from "@/app/utils"
+import { Error, Loading } from "@/app/components";
 
 type DetailedCountry = {
   cca3: string;
@@ -61,8 +62,8 @@ export default function Country() {
     }
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading) return <Loading text="Visiting country..." />;
+  if (error) return <Error text={error} />;
 
   const {
     flags,
