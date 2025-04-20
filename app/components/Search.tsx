@@ -9,7 +9,7 @@ type SearchProps = {
 const Search = ({count, search, setSearch}: SearchProps) => {
 
   return (
-    <div className="w-1/2">
+    <div className="w-full md:w-1/2">
       <div className="relative mb-2">
         <input
           className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2
