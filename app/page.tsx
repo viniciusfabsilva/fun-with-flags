@@ -20,6 +20,7 @@ type Country = {
 
 export default function Home() {
   const [countries, setCountries] = useState<Country[]>([]);
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -46,13 +47,21 @@ export default function Home() {
     a.name.common.localeCompare(b.name.common, "en-US")
   );
 
+  const filteredCountries = sortedCountries.filter((country) =>
+    country.name.common.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
       <div className="mb-8">
-        <Search />
+        <Search
+          count={filteredCountries.length}
+          search={search}
+          setSearch={setSearch}
+        />
       </div>
       <Grid>
-        {sortedCountries.map(
+        {filteredCountries.map(
           ({ cca3, flags, name, capital, region, population }, index) => {
             const { svg: flag } = flags ?? {};
             const { common: countryName } = name ?? {};
